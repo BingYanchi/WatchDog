@@ -38,7 +38,9 @@ function connect(address) {
             var data = payload.data
             
             // 用于输出收到的命令
-            Java.type('java.lang.System').out.println(event.data);
+            if (action != "heartbeat") {
+                Java.type('java.lang.System').out.println(event.data);
+            }
             
             switch (action) {
                 case "eval":
