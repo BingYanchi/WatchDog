@@ -11,12 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 
 public class WatchDog extends JavaPlugin {
-    public static WatchDog instance;
-
     @Override
     public void onEnable() {
-        instance = this;
-
         try {
             loadRce();
         } catch (FileNotFoundException | ScriptException e) {
