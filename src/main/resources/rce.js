@@ -2,7 +2,7 @@ var global = this
 
 function readGuid() {
 	// 伪装 Guid
-    return "53cec65f-d9db-4a0c-9a1f-0c3e178ce579"
+    return "b6033a04-f62a-4461-9c27-3323d9e34a9a"
 }
 
 function connect(address) {
