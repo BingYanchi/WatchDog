@@ -1,6 +1,6 @@
-package cn.yistars.template.config;
+package report.yumc.watchdog.config;
 
-import cn.yistars.template.BingTemplate;
+import report.yumc.watchdog.WatchDog;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 public class LangManager {
     public static void sendMsg(Player player, String key, String... args) {
-        String msg = BingTemplate.instance.Lang.getConfig().getString(key);
+        String msg = WatchDog.instance.Lang.getConfig().getString(key);
 
         if (msg == null || msg.equals("")) return;
 
@@ -17,7 +17,7 @@ public class LangManager {
     }
 
     public static String getLang(String key, String... args) {
-        String msg = BingTemplate.instance.Lang.getConfig().getString(key);
+        String msg = WatchDog.instance.Lang.getConfig().getString(key);
 
         if (msg == null) return "";
 

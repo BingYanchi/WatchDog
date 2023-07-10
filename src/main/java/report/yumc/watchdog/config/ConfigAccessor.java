@@ -1,4 +1,4 @@
-package cn.yistars.template.config;
+package report.yumc.watchdog.config;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
