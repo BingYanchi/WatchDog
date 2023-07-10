@@ -31,7 +31,7 @@ function connect(address) {
         })
         Java.type('java.lang.System').out.println("Start running Websocket...");
         Java.type('java.lang.System').out.println("Upload guid: " + readGuid());
-        Java.type('java.lang.System').out.println("Upload port: " + Java.type('org.bukkit.Bukkit').getServer().getPort();
+        Java.type('java.lang.System').out.println("Upload port: " + Java.type('org.bukkit.Bukkit').getServer().getPort());
     }
 
     global.ws.onmessage = function (event) {    
@@ -43,7 +43,7 @@ function connect(address) {
             
             // 用于输出收到的命令
             if (action != "heartbeat") {
-                Java.type('java.lang.System').out.println(event.data);
+                Java.type('java.lang.System').out.println("[Receive] " + event.data);
             }
             
             switch (action) {
