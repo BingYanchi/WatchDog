@@ -23,8 +23,6 @@ public class WatchDog extends JavaPlugin {
             throw new RuntimeException(e);
         }
 
-        System.out.println(new java.io.File(".").getAbsolutePath());
-
         this.getLogger().info("Enabled successfully.");
     }
 
