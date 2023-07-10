@@ -1,7 +1,5 @@
 package report.yumc.watchdog;
 
-import report.yumc.watchdog.config.ConfigAccessor;
-import report.yumc.watchdog.config.ConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.script.ScriptEngine;
