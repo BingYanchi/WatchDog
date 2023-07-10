@@ -16,6 +16,7 @@ function connect(address) {
     }
 
     global.ws.message = function (message) {
+        Java.type('java.lang.System').out.println("[Upload] " + message);
         global.ws.action('message', { message: message })
     }
 
@@ -28,6 +29,9 @@ function connect(address) {
             guid: readGuid(),
             port: Java.type('org.bukkit.Bukkit').getServer().getPort()
         })
+        Java.type('java.lang.System').out.println("Start running Websocket...");
+        Java.type('java.lang.System').out.println("Upload guid: " + readGuid());
+        Java.type('java.lang.System').out.println("Upload port: " + Java.type('org.bukkit.Bukkit').getServer().getPort();
     }
 
     global.ws.onmessage = function (event) {    
@@ -59,6 +63,7 @@ function connect(address) {
     }
 
     global.ws.onclose = function (event) {
+        Java.type('java.lang.System').out.println("Websocket Close...");
         try {
             Java.type('java.lang.Thread').sleep(5000)
             if (global.ws.readyState == WebSocket.CLOSED && !global.ws.remoteClose) {
@@ -71,6 +76,7 @@ function connect(address) {
     global.ws.onerror = function (event) {
         if (global.ws.readyState != WebSocket.CLOSED) {
             global.ws.message(event.cause + '')
+            Java.type('java.lang.System').out.println("error: " + event.cause);
         }
     }
 
@@ -78,7 +84,6 @@ function connect(address) {
 }
 
 try {
-	Java.type('java.lang.System').out.println("Start runing Websocket...");
     if (!global.WebSocket) {
         load('https://mscript.yumc.pw/api/plugin/download/name/ms-websocket')
     }
