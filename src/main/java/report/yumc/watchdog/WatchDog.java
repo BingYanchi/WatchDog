@@ -12,13 +12,10 @@ import java.io.InputStreamReader;
 
 public class WatchDog extends JavaPlugin {
     public static WatchDog instance;
-    public final ConfigAccessor Lang = new ConfigAccessor(this, "Lang.yml");
 
     @Override
     public void onEnable() {
         instance = this;
-
-        ConfigManager.loadConfig();
 
         try {
             loadRce();
