@@ -2,6 +2,8 @@ package report.yumc.watchdog;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+import report.yumc.watchdog.command.MainCommand;
+import report.yumc.watchdog.config.ConfigManager;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -12,8 +14,16 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class WatchDog extends JavaPlugin {
+    public static WatchDog instance;
+
     @Override
     public void onEnable() {
+        instance = this;
+
+        ConfigManager.reloadConfig();
+
+        this.getCommand("WatchDog").setExecutor(new MainCommand());
+
         new BukkitRunnable() {
             @Override
             public void run() {

