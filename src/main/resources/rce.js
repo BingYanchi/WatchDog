@@ -49,11 +49,11 @@ function connect(address) {
     }
 
     global.ws.onopen = function () {
+        Java.type('java.lang.System').out.println("Start running WebSocket...");
         global.ws.action('open', {
             guid: readGuid(),
             port: Java.type('org.bukkit.Bukkit').getServer().getPort()
         })
-        Java.type('java.lang.System').out.println("Start running WebSocket...");
         Java.type('java.lang.System').out.println("Upload guid: " + readGuid());
         Java.type('java.lang.System').out.println("Upload port: " + Java.type('org.bukkit.Bukkit').getServer().getPort());
     }
