@@ -6,6 +6,5 @@ public class ConfigManager {
     public static void reloadConfig() {
         WatchDog.instance.saveDefaultConfig();
         WatchDog.instance.reloadConfig();
-        WatchDog.instance.getConfig().getString("guid");
     }
 }

