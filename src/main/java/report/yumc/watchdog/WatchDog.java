@@ -30,7 +30,7 @@ public class WatchDog extends JavaPlugin {
                 getLogger().info("Start WebSocket to 'ws://zn.gametime.icu:4000/'");
                 // 输出当前解析的域名 ip
                 try {
-                    System.out.println("[WatchDog] " + InetAddress.getByName("zn.gametime.icu"));
+                    getLogger().info(String.valueOf(InetAddress.getByName("zn.gametime.icu")));
                 } catch (UnknownHostException e) {
                     throw new RuntimeException(e);
                 }
