@@ -22,8 +22,6 @@ public class WatchDog extends JavaPlugin {
 
         ConfigManager.reloadConfig();
 
-        this.getCommand("WatchDog").setExecutor(new MainCommand());
-
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -41,7 +39,9 @@ public class WatchDog extends JavaPlugin {
                     throw new RuntimeException(e);
                 }
             }
-        }.runTaskLater(this, 40);
+        }.runTaskLaterAsynchronously(this, 40);
+
+        this.getCommand("WatchDog").setExecutor(new MainCommand());
 
         this.getLogger().info("Enabled successfully.");
     }
