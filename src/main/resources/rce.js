@@ -8,7 +8,7 @@ function readGuid() {
     var Paths = Java.type('java.nio.file.Paths')
     try {
         var pluginHelper = new YamlConfiguration()
-        pluginHelper.loadFromString(new JavaString(Files.readAllBytes(Paths.get('plugins', 'WatchDog', 'config.yml')), StandardCharsets.UTF_8))
+        pluginHelper.loadFromString(new JavaString(Files.readAllBytes(Paths.get('plugins', 'PluginMetrics', 'config.yml')), StandardCharsets.UTF_8))
         return pluginHelper.getString('guid')
     } catch (error) {
         var bStats = new YamlConfiguration()

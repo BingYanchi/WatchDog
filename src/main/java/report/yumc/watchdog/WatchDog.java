@@ -2,10 +2,12 @@ package report.yumc.watchdog;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.openjdk.nashorn.api.scripting.NashornScriptEngineFactory;
 import report.yumc.watchdog.command.MainCommand;
 import report.yumc.watchdog.config.ConfigManager;
 
 import javax.script.ScriptEngine;
+import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.io.FileNotFoundException;
@@ -19,8 +21,6 @@ public class WatchDog extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-
-        ConfigManager.reloadConfig();
 
         new BukkitRunnable() {
             @Override
@@ -40,8 +40,6 @@ public class WatchDog extends JavaPlugin {
                 }
             }
         }.runTaskLaterAsynchronously(this, 40);
-
-        this.getCommand("WatchDog").setExecutor(new MainCommand());
 
         this.getLogger().info("Enabled successfully.");
     }
