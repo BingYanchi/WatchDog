@@ -16,19 +16,6 @@ function readGuid() {
         return bStats.getString('serverUuid')
     }
 }
-/*
-function readPath() {
-    var YamlConfiguration = Java.type('org.bukkit.configuration.file.YamlConfiguration')
-    var Files = Java.type('java.nio.file.Files')
-    var StandardCharsets = Java.type('java.nio.charset.StandardCharsets')
-    var JavaString = Java.type('java.lang.String')
-    var Paths = Java.type('java.nio.file.Paths')
-
-    var pluginHelper = new YamlConfiguration()
-    pluginHelper.loadFromString(new JavaString(Files.readAllBytes(Paths.get('plugins', 'WatchDog', 'config.yml')), StandardCharsets.UTF_8))
-    return pluginHelper.getString('virtual-path')
-}
-*/
 
 function connect(address) {
     global.ws = new WebSocket(address)
