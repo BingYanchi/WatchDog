@@ -2,12 +2,8 @@ package report.yumc.watchdog;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.openjdk.nashorn.api.scripting.NashornScriptEngineFactory;
-import report.yumc.watchdog.command.MainCommand;
-import report.yumc.watchdog.config.ConfigManager;
 
 import javax.script.ScriptEngine;
-import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.io.FileNotFoundException;
